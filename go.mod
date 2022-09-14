@@ -1,3 +1,3 @@
-module github.com/skeleton1231/skeletonAlgo
+module skeletonAlgo
 
 go 1.19
