@@ -37,5 +37,24 @@ func (list *List) InsertBeforeNode(n *Node, v interface{}) bool {
 		return false
 	}
 
+	current := list.head.next
+	previous := list.head
+
+	for nil != current {
+		if current == n {
+			break
+		}
+		previous = current
+		current = current.next
+	}
+
+	if nil == current {
+		return false
+	}
+
+	newNode := NewNode(v)
+	previous.next = newNode
+	newNode.next = current
+	list.len++
 	return true
 }
