@@ -58,3 +58,17 @@ func (list *List) InsertBeforeNode(n *Node, v interface{}) bool {
 	list.len++
 	return true
 }
+
+func (list *List) FindNodeByIndex(index uint) *Node {
+	if index > list.len {
+		return nil
+	}
+
+	current := list.head.next
+	var i uint = 0
+	for ; i <= index; i++ {
+		current = current.next
+	}
+	return current
+
+}
