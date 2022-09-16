@@ -31,6 +31,7 @@ func (list *List) InsertAferNode(n *Node, v interface{}) bool {
 	return true
 }
 
+// 在某个节点前面插入
 func (list *List) InsertBeforeNode(n *Node, v interface{}) bool {
 
 	if nil == n && n == list.head {
@@ -71,4 +72,18 @@ func (list *List) FindNodeByIndex(index uint) *Node {
 	}
 	return current
 
+}
+
+// 在链表头部后面插入节点
+func (list *List) InsertToHead(v interface{}) bool {
+	return list.InsertAferNode(list.head, v)
+}
+
+// 插入到链表尾部后面插入节点
+func (list *List) InsertToTail(v interface{}) bool {
+	current := list.head
+	for nil != current.next {
+		current = current.next
+	}
+	return list.InsertAferNode(current, v)
 }
