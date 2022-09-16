@@ -1,5 +1,9 @@
 package linkedlist
 
+import (
+	"fmt"
+)
+
 // 节点
 type Node struct {
 	next  *Node
@@ -16,6 +20,18 @@ type List struct {
 
 func NewNode(v interface{}) *Node {
 	return &Node{nil, v}
+}
+
+func NewList() *List {
+	return &List{NewNode(0), 0}
+}
+
+func (n *Node) GetNext() *Node {
+	return n.next
+}
+
+func (n *Node) GetValue() interface{} {
+	return n.value
 }
 
 // 在某个节点后面插入节点
@@ -86,4 +102,17 @@ func (list *List) InsertToTail(v interface{}) bool {
 		current = current.next
 	}
 	return list.InsertAferNode(current, v)
+}
+
+// 遍历打印链表 实现Value Interface
+func (list *List) PrintList() {
+	current := list.head.next
+	format := ""
+	for nil != current {
+		format += fmt.Sprintf("%v", current.GetValue())
+		if nil != current {
+			format += "->"
+		}
+	}
+	fmt.Println(format)
 }
