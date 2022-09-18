@@ -13,7 +13,7 @@ func NewArrayQueue(n int) *ArrayQueue {
 	return &ArrayQueue{make([]interface{}, n), n, 0, 0}
 }
 
-func (ar *ArrayQueue) Enqueue(v interface{}) bool {
+func (ar *ArrayQueue) EnQueue(v interface{}) bool {
 	if ar.tail == ar.capacity {
 		return false
 	}
@@ -23,17 +23,15 @@ func (ar *ArrayQueue) Enqueue(v interface{}) bool {
 	return true
 }
 
-func (ar *ArrayQueue) EnqueueV2(v interface{}) bool {
+func (ar *ArrayQueue) EnQueueV2(v interface{}) bool {
 	if ar.tail == ar.capacity {
 		if ar.head == 0 {
 			return false
 		}
-
 		//数据搬移
 		for i := ar.head; i < ar.tail; i++ {
 			ar.q[i-ar.head] = ar.q[i]
 		}
-
 		// 搬移完之后重新更新head和tail
 		ar.tail -= ar.head
 		ar.head = 0
@@ -45,7 +43,7 @@ func (ar *ArrayQueue) EnqueueV2(v interface{}) bool {
 
 }
 
-func (ar *ArrayQueue) Dequeue() interface{} {
+func (ar *ArrayQueue) DeQueue() interface{} {
 	if ar.head == ar.capacity {
 		return nil
 	}

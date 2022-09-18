@@ -26,7 +26,6 @@ func (ql *QueueList) EnQueue(v interface{}) {
 	} else {
 		ql.tail.next = node
 		ql.tail = ql.tail.next
-
 		/*
 			ql.tail.next = node
 			ql.tail = node
@@ -37,7 +36,6 @@ func (ql *QueueList) EnQueue(v interface{}) {
 
 func (ql *QueueList) DeQueue() interface{} {
 	//出队时，head = head->next。
-
 	if ql.head == nil {
 		return nil
 	}
